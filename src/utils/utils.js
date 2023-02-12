@@ -8,7 +8,6 @@ export function isTimestamp(str) {
 }
 
 export function getDisplayableDateString(dateString) {
-    console.log(dateString, "::dateString")
     var date = new Date(dateString);
     
     if (isNaN(date.getTime())) {
