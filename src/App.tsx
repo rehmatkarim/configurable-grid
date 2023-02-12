@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Grid from './Components/Grid/Grid';
 
 function App() {
+  const columns = [{ label: 'Name', key: 'name', type: 'string' },
+  { label: 'Date', key: 'date', type: 'date' },
+  { label: 'Category', key: 'category', type: 'string' },
+  { label: 'Amount', key: 'amount', type: 'number' },
+  { label: 'Created At', key: 'created_at', type: 'date' }];
+
+  const apiURl = "https://us-central1-fir-apps-services.cloudfunctions.net/transactions";
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Configurable grid</h1>
+      <Grid columns = {columns} api= {apiURl}/>
     </div>
   );
 }
