@@ -3,6 +3,7 @@ import List from "../List/List";
 import { isTimestamp, getDisplayableDateString } from "../../utils/utils";
 import { gridPropTypes, columnTypes } from "./Grid.types";
 import axios from "axios";
+import "./Grid.css";
 
 const Grid: React.FC<gridPropTypes> = ({
   columns,
