@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <h1>Configurable grid</h1>
-      <Grid columns = {columns} api= {apiURl}/>
+      <Grid columns = {columns} api= {apiURl} ListTitleColumn= {"category"} ListSubTitleColumn= {"amount"}/>
     </div>
   );
 }

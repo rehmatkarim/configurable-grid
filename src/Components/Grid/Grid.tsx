@@ -4,7 +4,12 @@ import { isTimestamp, getDisplayableDateString } from "../../utils/utils";
 import { gridPropTypes, columnTypes } from "./Grid.types";
 import axios from "axios";
 
-const Grid: React.FC<gridPropTypes> = ({ columns, api }) => {
+const Grid: React.FC<gridPropTypes> = ({
+  columns,
+  api,
+  ListTitleColumn,
+  ListSubTitleColumn,
+}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -27,7 +32,7 @@ const Grid: React.FC<gridPropTypes> = ({ columns, api }) => {
       .catch((error) => {
         console.error(error);
       });
-  }, [data]);
+  }, [data, api, columns]);
 
   return (
     <div>
@@ -59,7 +64,11 @@ const Grid: React.FC<gridPropTypes> = ({ columns, api }) => {
           </tbody>
         </table>
       ) : (
-        <List title="name" subTitle="amount" data={data} />
+        <List
+          title={ListTitleColumn}
+          subTitle={ListSubTitleColumn}
+          data={data}
+        />
       )}
     </div>
   );
