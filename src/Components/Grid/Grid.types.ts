@@ -3,6 +3,8 @@ export interface gridPropTypes {
     api: string;
     ListTitleColumn?: string;
     ListSubTitleColumn?: string;
+    positiveColor?: string;
+    negativeColor?: string;
   }
 export interface columnTypes {
     label: string;

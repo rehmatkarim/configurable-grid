@@ -29,3 +29,10 @@ table th{
     top: 0;
     z-index: 1;
 }
+
+.green{
+  color: rgb(6, 85, 6);
+}
+.red {
+  color: rgb(85, 7, 7);
+}
