@@ -22,3 +22,15 @@ export function IsNumeric(input){
     var RE = /^-{0,1}\d*\.{0,1}\d+$/;
     return (RE.test(input));
 }
+
+
+export function getCellClassName(value, positiveColor, negativeColor){
+  if (IsNumeric(value)) {
+    if (value < 0) {
+      return positiveColor;
+    } else if (value > 0) {
+      return negativeColor;
+    }
+  }
+  return '';
+};

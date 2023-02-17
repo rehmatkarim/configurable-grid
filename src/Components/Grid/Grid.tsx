@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import List from "../List/List";
-import { isTimestamp, getDisplayableDateString, IsNumeric } from "../../utils/utils";
+import {
+  isTimestamp,
+  getDisplayableDateString,
+  getCellClassName,
+} from "../../utils/utils";
 import { gridPropTypes, columnTypes } from "./Grid.types";
 import axios from "axios";
 import "./Grid.css";
@@ -11,7 +15,7 @@ const Grid: React.FC<gridPropTypes> = ({
   ListTitleColumn,
   ListSubTitleColumn,
   positiveColor,
-  negativeColor
+  negativeColor,
 }) => {
   const [data, setData] = useState([]);
 
@@ -37,17 +41,6 @@ const Grid: React.FC<gridPropTypes> = ({
       });
   }, [data, api, columns]);
 
-  const getCellClassName = (value: any) => {
-    if (IsNumeric(value)) {
-      if (value < 0) {
-        return 'green';
-      } else if (value > 0) {
-        return 'red';
-      }
-    }
-    return '';
-  };
-
   return (
     <div>
       {window.innerWidth > 720 ? (
@@ -65,7 +58,14 @@ const Grid: React.FC<gridPropTypes> = ({
                 <tr key={index}>
                   {columns.map((column, colIndex) => {
                     return (
-                      <td key={colIndex} className={getCellClassName(item[column.key])}>
+                      <td
+                        key={colIndex}
+                        className={getCellClassName(
+                          item[column.key],
+                          positiveColor,
+                          negativeColor
+                        )}
+                      >
                         {isTimestamp(item[column.key])
                           ? getDisplayableDateString(item[column.key])
                           : item[column.key]}
